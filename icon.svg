@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+    <g id="stack" transform="translate(0 -30)">
+        <rect x="32" y="50" width="70" height="90" fill="#e0e0e0" stroke="#b0b0b0"/>
+        <rect x="30" y="48" width="70" height="90" fill="#e8e8e8" stroke="#b0b0b0"/>
+        <rect x="28" y="46" width="70" height="90" fill="#f0f0f0" stroke="#b0b0b0"/>
+        <rect x="26" y="44" width="70" height="90" fill="#f8f8f8" stroke="#b0b0b0"/>
+        
+        <!-- Main visible card -->
+        <rect x="24" y="42" width="70" height="90" fill="white" stroke="#000000" stroke-width="1"/>
+        
+        
+        <!-- Letters - now centered -->
+        <text x="60" y="87" font-family="Arial Black" font-size="48" fill="#000000" text-anchor="middle">D</text>
+        <text x="58.85" y="122" font-family="Arial Black" font-size="48" fill="#000000" text-anchor="middle">E</text>
+
+    </g>
+</svg>

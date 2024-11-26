@@ -1,0 +1,32 @@
+{
+    "name": "Dominion Extension",
+    "version": "0.0.1",
+    "description": "Improve the dominion client",
+    "homepage_url": "https://github.com/sliftist/dominion-ext",
+    "manifest_version": 3,
+    "icons": {
+        "16": "icon16.png",
+        "32": "icon32.png",
+        "48": "icon48.png",
+        "128": "icon128.png"
+    },
+    "permissions": [],
+    "web_accessible_resources": [
+        {
+            "resources": ["*.js"],
+            "matches": ["<all_urls>"]
+        }
+    ],
+    "content_scripts": [
+        {
+            "type": "module",
+            "js": [
+                "./extLoader.js"
+            ],
+            "run_at": "document_end",
+            "matches": [
+                "*://dominion.games/*"
+            ]
+        }
+    ]
+}

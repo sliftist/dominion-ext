@@ -1,0 +1,29 @@
+todonext
+
+Button to setup game to nice defaults
+    - All events + squire
+
+Show friend's tables on main page
+
+Current game stats
+    - Time per player
+    - Spent treasure / wasted treasure
+    - Played cards / extra cards
+        - Chart, throughout game
+        - OR, maybe split before first province / after
+    - Treasure of all cards in deck
+    - Average treasure of all cards in deck
+
+Historical game stats
+    - Plus, add win/loss
+
+Win/loss summary
+    - Maybe grouped by players in game?
+
+Fixed premoved
+    - Always show end actions / end buys
+    - Always play all treasures to buy
+
+Image previews of cards in history?
+
+Group history by day / cut off after a certain amount, and show a time selector?
