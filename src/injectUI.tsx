@@ -40,33 +40,38 @@ class InboxReplacement extends preact.Component {
                         .vbox(10)
                 }
             >
-                <div className={css.hbox(20).wrap.alignItems("start").marginRight(100)}>
+                <div className={css.hbox(20).wrap.alignItems("start").marginRight(100)
+                    .overflowAuto
+                    .pad2(10)
+                }>
                     {gamesList.map(game => (
                         <div className={
-                            css.vbox(8).maxWidth("32%")
+                            css.vbox(8).maxWidth("calc(30% - 10px)")
                                 .pad2(10, 4).boxShadow("0 0 10px black")
                             + (this.synced.lastDeleted === game && css.opacity(0.5))
                         }>
                             <div className={css.hbox(10)}>
                                 <h3 title={game.id}>{formatDateTime(game.time)}</h3>
                                 <div className={css.marginAuto} />
-                                <button onClick={() => createTable(game.replayList)}>
-                                    Create
-                                </button>
-                                <button onClick={() => navigator.clipboard.writeText(game.replayList.join(", "))}>
-                                    Copy
-                                </button>
-                                <button onClick={() => {
-                                    if (this.synced.lastDeleted === game) {
-                                        this.synced.lastDeleted = undefined;
-                                        games.set(game.id, deepCloneJSON(game));
-                                    } else {
-                                        this.synced.lastDeleted = deepCloneJSON(game);
-                                        games.remove(game.id);
-                                    }
-                                }}>
-                                    {this.synced.lastDeleted === game ? "Undelete" : "Delete"}
-                                </button>
+                                <div className={css.hbox(5, 2)}>
+                                    <button onClick={() => createTable(game.replayList)}>
+                                        Create
+                                    </button>
+                                    <button onClick={() => navigator.clipboard.writeText(game.replayList.join(", "))}>
+                                        Copy
+                                    </button>
+                                    <button onClick={() => {
+                                        if (this.synced.lastDeleted === game) {
+                                            this.synced.lastDeleted = undefined;
+                                            games.set(game.id, deepCloneJSON(game));
+                                        } else {
+                                            this.synced.lastDeleted = deepCloneJSON(game);
+                                            games.remove(game.id);
+                                        }
+                                    }}>
+                                        {this.synced.lastDeleted === game ? "Undelete" : "Delete"}
+                                    </button>
+                                </div>
                             </div>
                             <div className={css.marginLeft(25).hbox(10).wrap}>
                                 {game.replayList.map(card => (
@@ -115,6 +120,7 @@ function getCurrentTab() {
     return document.querySelector(".tab.selected")?.textContent?.trim();
 }
 
+(globalThis as any).getReplayList = getReplayList;
 function getReplayList(): string[] {
     function getStackName(stack: Element) {
         return stack.querySelector(".name-layer")?.textContent || "";
@@ -122,13 +128,12 @@ function getReplayList(): string[] {
 
     let stacks = Array.from(document.querySelectorAll(".card-stacks > div"));
     let allNames = new Set(stacks.map(x => getStackName(x)).filter(x => x));
-    let sideHeight = Math.round(stacks[0].getBoundingClientRect().height);
-    stacks = stacks.filter(x => {
-        let height = Math.round(x.getBoundingClientRect().height);
-        return sideHeight < height && height < sideHeight * 2;
-    });
 
     let mainNames = new Set(stacks.map(x => getStackName(x)).filter(x => x));
+
+    for (let defaultName of ["Curse", "Estate", "Duchy", "Province", "Copper", "Silver", "Gold"]) {
+        mainNames.delete(defaultName);
+    }
 
     if (allNames.has("Overgrown Estate") || allNames.has("Hovel") || allNames.has("Necropolis")) {
         mainNames.add("Shelters");
@@ -144,7 +149,8 @@ function getReplayList(): string[] {
     for (let stack of stacks) {
         let nextStack = stack?.nextElementSibling;
         if (!nextStack) continue;
-        if (nextStack.getBoundingClientRect().height >= sideHeight * 0.5) continue;
+        let height = stack.getBoundingClientRect().height;
+        if (nextStack.getBoundingClientRect().height >= height * 0.5) continue;
         if (nextStack.getBoundingClientRect().height <= 0) continue;
         // Find really short stacks, which are associated cardsa
         let baseName = getStackName(stack);

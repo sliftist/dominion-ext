@@ -1,7 +1,7 @@
 {
     "name": "Dominion Extension",
     "version": "0.0.1",
-    "description": "Improve the dominion client",
+    "description": "Improving the dominion client with a chrome extension.",
     "homepage_url": "https://github.com/sliftist/dominion-ext",
     "manifest_version": 3,
     "icons": {
