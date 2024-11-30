@@ -1,6 +1,6 @@
 ---
 name: Feature suggestion
-about: Suggest an idea for this project
+about: Improvements that help make the product more useful for you.
 title: ''
 labels: ''
 assignees: ''
