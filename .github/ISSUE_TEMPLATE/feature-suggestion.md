@@ -1,6 +1,6 @@
 ---
 name: Feature suggestion
-about: Improvements that help make the product more useful for you.
+about: Improvements that make the product more useful for you.
 title: ''
 labels: ''
 assignees: ''
