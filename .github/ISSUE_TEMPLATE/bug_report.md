@@ -1,6 +1,7 @@
 ---
 name: Bug report
-about: Create a report to help us improve
+about: Clearly incorrect, or erroneous behavior. Crashes, data loss, soft locking
+  client state, etc.
 title: ''
 labels: ''
 assignees: ''
