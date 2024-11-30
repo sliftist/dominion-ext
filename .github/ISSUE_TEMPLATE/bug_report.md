@@ -1,7 +1,6 @@
 ---
 name: Bug report
-about: Clearly incorrect, or erroneous behavior. Crashes, data loss, soft locking
-  client state, etc.
+about: Clearly incorrect, or erroneous behavior. Crashes, data loss, etc.
 title: ''
 labels: ''
 assignees: ''
