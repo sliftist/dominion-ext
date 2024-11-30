@@ -1,5 +1,15 @@
 todonext
 
+Reset table if it exists
+
+Image previews of cards in history
+
+Link to previous games in lobby screen / post game screen
+
+Update inbox tab name and highlight it
+    - Maybe add a new tab instead?
+
+
 Button to setup game to nice defaults
     - All events + squire
 
@@ -23,7 +33,5 @@ Win/loss summary
 Fixed premoved
     - Always show end actions / end buys
     - Always play all treasures to buy
-
-Image previews of cards in history?
 
 Group history by day / cut off after a certain amount, and show a time selector?

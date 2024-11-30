@@ -1,8 +1,12 @@
 # Dominion Extension
 
-
+Replace the "inbox" page with a game history. You have to leave the lobby to see this page.
 
 ## Installation
+
+https://chromewebstore.google.com/detail/dominion-extension/hncfgcengilnhbmpoknamdfebmgjkmcf
+
+## Developer Installation
 
 ```bash
 git clone git@github.com:sliftist/dominion-ext.git

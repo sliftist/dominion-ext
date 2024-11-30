@@ -33,7 +33,7 @@ class InboxReplacement extends preact.Component {
                 className={
                     css
                         .absolute.pos(0, 0).fillBoth
-                        .borderRadius(13)
+                        .borderRadius(11)
                         .hsla(30, 10, 50, 1)
                         .zIndex(1)
                         .pad2(20)
