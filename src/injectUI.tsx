@@ -6,6 +6,14 @@ import { css } from "typesafecss";
 import { observable } from "./misc/mobxTyped";
 import { formatDate, formatDateTime } from "socket-function/src/formatting/format";
 
+
+const nonSupplyCards = [
+    "Curse", "Estate", "Duchy", "Province", "Copper", "Silver", "Gold",
+    "Horse",
+    // https://wiki.dominionstrategy.com/index.php/Category:Non-Supply_cards
+    "Amphora", "Bag of Gold", "Bat", "Coronet", "Courser", "Cursed Gold", "Demesne", "Diadem", "Doubloons", "Endless Chalice", "Figurehead", "Followers", "Ghost", "Goat", "Hammer", "Haunted Mirror", "Horse", "Housecarl", "Hovel", "Huge Turnip", "Imp", "Insignia", "Jewels", "Lucky Coin", "Madman", "Magic Lamp", "Mercenary", "Necropolis", "Orb", "Overgrown Estate", "Pasture", "Pouch", "Princess", "Prize Goat", "Puzzle Box", "Renown", "Sextant", "Shield", "Spell Scroll", "Spoils", "Staff", "Sword", "Trusty Steed", "Will-o'-Wisp", "Wish", "Zombie Apprentice", "Zombie Mason", "Zombie Spy",
+];
+
 type GameInfo = {
     id: string;
     time: number;
@@ -131,7 +139,7 @@ function getReplayList(): string[] {
 
     let mainNames = new Set(stacks.map(x => getStackName(x)).filter(x => x));
 
-    for (let defaultName of ["Curse", "Estate", "Duchy", "Province", "Copper", "Silver", "Gold"]) {
+    for (let defaultName of nonSupplyCards) {
         mainNames.delete(defaultName);
     }
 
