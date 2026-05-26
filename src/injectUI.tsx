@@ -129,17 +129,23 @@ export async function injectUI() {
 
     });
 
-    document.addEventListener("click", (e) => {
-        if (!e.isTrusted) return;
-        if ((e.target as Element).closest(".tab:not(#games-tab)")) {
-            let gamesTabInnerContent = document.querySelector("#games-tab-inner-content");
-            if (gamesTabInnerContent) {
-                preact.render(null, gamesTabInnerContent);
-                gamesTabInnerContent.remove();
-            }
-            document.querySelector("#games-tab")?.classList.remove("selected");
+    const hideGamesContent = () => {
+        let gamesTabInnerContent = document.querySelector("#games-tab-inner-content");
+        if (gamesTabInnerContent) {
+            preact.render(null, gamesTabInnerContent);
+            gamesTabInnerContent.remove();
         }
-    });
+        document.querySelector("#games-tab")?.classList.remove("selected");
+    };
+
+    const BOUND_MARKER = "__gamesTabHideBound";
+    setInterval(() => {
+        for (let tab of document.querySelectorAll<HTMLElement>(".tab:not(#games-tab)")) {
+            if ((tab as any)[BOUND_MARKER]) continue;
+            (tab as any)[BOUND_MARKER] = true;
+            tab.addEventListener("click", hideGamesContent);
+        }
+    }, DOM_POLL_INTERVAL);
 
     setInterval(async () => {
         let gameNumber = getGameNumber();
